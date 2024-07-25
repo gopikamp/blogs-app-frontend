@@ -10,19 +10,19 @@ const Login = () => {
         }
     )
     const inputHandler = (event) => {
-        changedata({ ...data, [event.target.name]: event.target.value }, [])
+        changedata({...data, [event.target.name]: event.target.value }, [])
     }
     const readvalue = () => {
         console.log(data)
-        axios.post("http://localhost:8081/signin", data).then(
-            (Response) => {
-                console.log(Response.data)
-                if (Response.data.status == "success") {
-                    sessionStorage.setItem("token", Response.data.token)
-                    sessionStorage.setItem("token", Response.data.userid)
+        axios.post("http://localhost:8082/signin",data).then(
+            (response) => {
+                console.log(response.data)
+                if (response.data.status == "success") {
+                    sessionStorage.setItem("token",response.data.token)
+                    sessionStorage.setItem("userid",response.data.userid)
                     navigate("/add")
                 } else {
-                    alert("error")
+                    alert(response.data.status)
                 }
             }
         ).catch(

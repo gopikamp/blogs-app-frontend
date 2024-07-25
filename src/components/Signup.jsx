@@ -14,18 +14,18 @@ const Signup = () => {
         }
     )
     const inputHandler = (event) => {
-        changedata({ ...data, [event.target.name]: event.target.value }, [])
+        changedata({...data,[event.target.name]: event.target.value }, [])
     }
     const readvalue = () => {
         if (data.password == data.confirmpassword) {
             alert("password and confirm password are same")
             console.log(data)
-            axios.post("http://localhost:8081/signup", data).then(
-                (Response) => {
-                    console.log(Response.data)
-                    if (Response.data.status == "success") {
-                        sessionStorage.setItem("token", Response.data.token)
-                        sessionStorage.setItem("token", Response.data.userid)
+            axios.post("http://localhost:8082/signup",data).then(
+                (response) => {
+                    console.log(response.data)
+                    if (response.data.status == "success") {
+                        sessionStorage.setItem("token",response.data.token)
+                        sessionStorage.setItem("userid",response.data.userid)
                         navigate("/")
                     } else {
                         alert("Error")
