@@ -14,7 +14,7 @@ const Signup = () => {
         }
     )
     const inputHandler = (event) => {
-        changedata({...data,[event.target.name]: event.target.value }, [])
+        changedata({...data,[event.target.name]: event.target.value },)
     }
     const readvalue = () => {
         if (data.password == data.confirmpassword) {
@@ -25,7 +25,7 @@ const Signup = () => {
                     console.log(response.data)
                     if (response.data.status == "success") {
                         sessionStorage.setItem("token",response.data.token)
-                        sessionStorage.setItem("userid",response.data.userid)
+                        sessionStorage.setItem("userId",response.data.userId)
                         navigate("/")
                     } else {
                         alert("Error")

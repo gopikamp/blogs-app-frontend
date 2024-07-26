@@ -10,7 +10,7 @@ const Login = () => {
         }
     )
     const inputHandler = (event) => {
-        changedata({...data, [event.target.name]: event.target.value }, [])
+        changedata({...data, [event.target.name]: event.target.value },)
     }
     const readvalue = () => {
         console.log(data)
@@ -19,7 +19,7 @@ const Login = () => {
                 console.log(response.data)
                 if (response.data.status == "success") {
                     sessionStorage.setItem("token",response.data.token)
-                    sessionStorage.setItem("userid",response.data.userid)
+                    sessionStorage.setItem("userId",response.data.userid)
                     navigate("/add")
                 } else {
                     alert(response.data.status)
